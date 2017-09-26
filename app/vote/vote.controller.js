@@ -1,0 +1,157 @@
+(function () {
+
+    'use strict';
+
+    angular.module('portalApp')
+        .controller('VoteController', ['$scope', '$log', 'VoteService', 'PlayerService', '$location', '$state', 'players', VoteController]);
+
+    function VoteController($scope, $log, VoteService, PlayerService, $location, $state, players) {
+
+        // 初始化选手信息
+        $scope.players = angular.copy(players);
+
+        $scope.players2 = [];
+
+        let all = $scope.players.length;
+        for (let i = 0; i < all / 2; i++) {
+            $scope.players2.push($scope.players[i]);
+        }
+        $scope.players.splice(0, Math.fround(all / 2));
+
+        $scope.history = [];
+
+        // 获取用户的投票记录
+        VoteService.getHistory(
+            {code: localStorage.code},
+            function (response) {
+                if (response.code === 0 && response.data) {
+                    response.data.forEach(function (item) {
+                        $scope.history.push(item);
+                    })
+                }
+            });
+
+
+        // 点击投票按钮
+        $scope.vote = function (playerId, $event) {
+            $event.stopPropagation();
+
+            if ($scope.voted(playerId)) {
+                return;
+            }
+
+            VoteService.vote(
+                {playerId: playerId},
+                localStorage.code,
+                function success(response) {
+                    if (response.data !== null) {
+                        $scope.history.push(response.data);
+                    }
+                },
+                function (error) {
+                    alert("投票失败，请退出后重试");
+                }
+            )
+        };
+
+        $scope.voted = function (playerId) {
+            return $scope.history.indexOf(playerId) >= 0;
+        };
+
+
+        /******************** 抽奖 *********************/
+
+        $scope.hasPrized = false;
+
+        let prizeHistory = localStorage.getItem("prize");
+        if(prizeHistory && Number(prizeHistory) === new Date().getDate()) {
+            $scope.hasPrized = true;
+        }
+
+
+        $scope.prize = {
+            score: 0,
+            running: false,
+            awards: [
+                {id: 0, name: "奖品0"},
+                {id: 1, name: "奖品1"},
+                {id: 2, name: "奖品2"},
+                {id: 3, name: "谢谢"},
+                {id: 4, name: "奖品4"},
+                {id: 5, name: "奖品5"},
+                {id: 6, name: "奖品6"},
+                {id: 7, name: "奖品7"},
+            ]
+        };
+
+        $scope.start = function () {
+            if ($scope.prize.running === true) {
+                return;
+            }
+
+            localStorage.setItem("prize", new Date().getDate());
+
+            $scope.prize.running = true;
+
+            let speed = 600;
+            let count = 0;
+            let myFunction = function () {
+
+                if ($scope.prize.running === false) {
+                    return;
+                }
+                clearTimeout(timeout);
+
+                count += 1;
+
+                if (count < 40) {
+                    if (speed > 100) {
+                        speed -= 100;
+                    } else if (speed > 50) {
+                        speed -= 50;
+                    }
+                } else {
+                    speed += 50;
+                }
+
+
+                $scope.prize.score += 1;
+                $scope.prize.score = $scope.prize.score % 8;
+                $scope.$apply();
+
+                if (speed >= 400 && $scope.prize.score === 3) {
+                    $scope.prize.running = false;
+                    $scope.hasPrized = true;
+                }
+
+                timeout = setTimeout(myFunction, speed);
+            };
+            let timeout = setTimeout(myFunction, speed);
+
+        };
+
+        /******************** 设置背景 *********************/
+
+        // 设置背景的宽度和高度
+        $(function () {
+
+            let height = $(window).height();
+            let width = $(window).width();
+
+            //改变div的高度
+            $('.container').height("auto");
+            //改变div的宽度
+            $('.container').width(width);
+
+            for (let i = 0; i < $scope.players.length; i++) {
+                $($('#info' + i)).css('left', i * width * 0.255 + "px").css('top', ($scope.players.length - i) * 30 + "px");
+            }
+            $('#info0').css('left', '10px');
+
+            for (let i = 0; i < $scope.players2.length; i++) {
+                $($('#info2' + i)).css('left', i * width * 0.255 + "px").css('bottom', (i + 2) * 30 + "px");
+            }
+            $('#info20').css('left', '10px');
+        });
+    }
+})();

@@ -1,0 +1,70 @@
+<div style="overflow: scroll">
+    <div id="slide" class="carousel slide">
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+            <div class="item" ng-repeat="img in images" ng-class="{'active': $index  === 0}">
+                <img href="{{img.url}}" ng-src="{{img.url}}">
+            </div>
+        </div>
+        <!-- 轮播（Carousel）导航 -->
+        <a class="carousel-control left" href="#slide"
+           data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#slide"
+           data-slide="next">&rsaquo;</a>
+    </div>
+
+    <div style="float: right; margin-top: 20px">
+        <span style="font-size: 1.4em;">{{player.name}}</span>
+
+        <audio id="voice" ng-src="{{player.voice}}">
+        </audio>
+
+        <span>
+            <img ng-if="!playStatus"
+                 style="width: 25px; height: auto; cursor: pointer;"
+                 src="../../public/img/voice_off.png"
+                 ng-click="play()"></img>
+            <img ng-if="playStatus"
+                 style="width: 25px; height: auto; cursor: pointer;"
+                 src="../../public/img/voice_on.png"
+                 ng-click="play()"></img>
+        </span>
+
+    </div>
+
+    <video controls="controls" width="100%" preload
+           poster="{{player.portrait}}">
+        <source src="{{player.video}}" type="video/mp4">
+    </video>
+
+    <div>
+        <table style="margin: auto; line-height: 30px;">
+            <tr>
+                <td style="width: 60px">名字:</td>
+                <td style="width: 200px;">{{player.name}}</td>
+            </tr>
+            <tr>
+                <td style="width: 60px">身高:</td>
+                <td style="width: 200px;">{{player.height}} cm</td>
+            </tr>
+            <tr>
+                <td style="width: 60px">球队:</td>
+                <td style="width: 200px;">{{teams[player.team].name}}</td>
+            </tr>
+            <tr>
+                <td style="width: 60px">星座:</td>
+                <td style="width: 200px;">{{player.constellation}}</td>
+            </tr>
+            <tr>
+                <td style="width: 60px">微博:</td>
+                <td style="width: 200px;">
+                    <a href="{{player.weiboUrl}}">{{player.weibo}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 60px">介绍:</td>
+                <td style="width: 200px;">{{player.introduce}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
