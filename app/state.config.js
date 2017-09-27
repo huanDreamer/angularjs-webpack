@@ -38,7 +38,7 @@
                     },
                     resolve: {
                         players: ['PlayerService', '$q', function (PlayerService, $q) {
-                            let d = $q.defer();
+                            var d = $q.defer();
                             PlayerService.list({}, function (response) {
                                 d.resolve(response.data);
                             });
@@ -57,7 +57,7 @@
                     },
                     resolve: {
                         player: ['PlayerService', '$q', '$stateParams', function (PlayerService, $q, $stateParams) {
-                            let d = $q.defer();
+                            var d = $q.defer();
                             PlayerService.get({playerId: $stateParams.playerId}, function (response) {
                                 d.resolve(response.data);
                             });

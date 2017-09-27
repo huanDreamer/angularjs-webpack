@@ -12,8 +12,8 @@
 
         $scope.players2 = [];
 
-        let all = $scope.players.length;
-        for (let i = 0; i < all / 2; i++) {
+        var all = $scope.players.length;
+        for (var i = 0; i < all / 2; i++) {
             $scope.players2.push($scope.players[i]);
         }
         $scope.players.splice(0, Math.fround(all / 2));
@@ -63,7 +63,7 @@
 
         $scope.hasPrized = false;
 
-        let prizeHistory = localStorage.getItem("prize");
+        var prizeHistory = localStorage.getItem("prize");
         if(prizeHistory && Number(prizeHistory) === new Date().getDate()) {
             $scope.hasPrized = true;
         }
@@ -93,9 +93,9 @@
 
             $scope.prize.running = true;
 
-            let speed = 600;
-            let count = 0;
-            let myFunction = function () {
+            var speed = 600;
+            var count = 0;
+            var myFunction = function () {
 
                 if ($scope.prize.running === false) {
                     return;
@@ -126,7 +126,7 @@
 
                 timeout = setTimeout(myFunction, speed);
             };
-            let timeout = setTimeout(myFunction, speed);
+            var timeout = setTimeout(myFunction, speed);
 
         };
 
@@ -135,20 +135,20 @@
         // 设置背景的宽度和高度
         $(function () {
 
-            let height = $(window).height();
-            let width = $(window).width();
+            var height = $(window).height();
+            var width = $(window).width();
 
             //改变div的高度
             $('.container').height("auto");
             //改变div的宽度
             $('.container').width(width);
 
-            for (let i = 0; i < $scope.players.length; i++) {
+            for (var i = 0; i < $scope.players.length; i++) {
                 $($('#info' + i)).css('left', i * width * 0.255 + "px").css('top', ($scope.players.length - i) * 30 + "px");
             }
             $('#info0').css('left', '10px');
 
-            for (let i = 0; i < $scope.players2.length; i++) {
+            for (var i = 0; i < $scope.players2.length; i++) {
                 $($('#info2' + i)).css('left', i * width * 0.255 + "px").css('bottom', (i + 2) * 30 + "px");
             }
             $('#info20').css('left', '10px');

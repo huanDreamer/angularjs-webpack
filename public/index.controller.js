@@ -8,7 +8,7 @@
     function IndexController(WeChatService) {
 
         // 获取localstorage code
-        let code = localStorage.getItem("code");
+        var code = localStorage.getItem("code");
         if (!code) {
 
             WeChatService.getCode(

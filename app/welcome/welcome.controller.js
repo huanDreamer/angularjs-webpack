@@ -10,8 +10,8 @@
         // 设置背景的宽度和高度
         $(function () {
 
-            let height = $(window).height();
-            let width = $(window).width();
+            var height = $(window).height();
+            var width = $(window).width();
 
             //改变div的高度
             $('#container').height(height);
