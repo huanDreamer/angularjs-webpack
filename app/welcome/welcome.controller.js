@@ -19,7 +19,7 @@
             $('#container').width(width);
 
             // 根据屏幕宽度加载对应的图片
-            $('#container').css("backgroundImage", "url('../../img/welcome.png')");
+            $('#container').css("backgroundImage", "url('http://ows8x8iqp.bkt.clouddn.com/welcome.jpg?imageslim')");
 
             $('#startImg').width(width / 4);
             $('#startBtn').css("marginLeft", width / 2 - $('#startImg').width() / 2 - 5 + "px");

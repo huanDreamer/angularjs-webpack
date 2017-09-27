@@ -3,9 +3,9 @@
     'use strict';
 
     angular.module('portalApp')
-        .controller('VoteController', ['$scope', '$log', 'VoteService', 'PlayerService', '$location', '$state', 'players', VoteController]);
+        .controller('VoteController', ['$scope', '$log', 'VoteService', 'PlayerService', 'PrizeService', '$location', '$state', '$uibModal', 'players', VoteController]);
 
-    function VoteController($scope, $log, VoteService, PlayerService, $location, $state, players) {
+    function VoteController($scope, $log, VoteService, PlayerService, PrizeService, $location, $state, $uibModal, players) {
 
         // 初始化选手信息
         $scope.players = angular.copy(players);
@@ -64,7 +64,7 @@
         $scope.hasPrized = false;
 
         var prizeHistory = localStorage.getItem("prize");
-        if(prizeHistory && Number(prizeHistory) === new Date().getDate()) {
+        if (prizeHistory && Number(prizeHistory) === new Date().getDate()) {
             $scope.hasPrized = true;
         }
 
@@ -89,7 +89,25 @@
                 return;
             }
 
-            localStorage.setItem("prize", new Date().getDate());
+            PrizeService.get(
+                {
+                    code: localStorage.getItem('code')
+                }, function success(response) {
+                    if (response.data) {
+                        prize(response.data.id)
+                    } else {
+                        prize(3);
+                    }
+
+                }, function error(reason) {
+
+                });
+
+        };
+
+        function prize(prize) {
+
+            // localStorage.setItem("prize", new Date().getDate());
 
             $scope.prize.running = true;
 
@@ -98,6 +116,9 @@
             var myFunction = function () {
 
                 if ($scope.prize.running === false) {
+
+                    prizeFinish($scope.prize.awards[prize]);
+
                     return;
                 }
                 clearTimeout(timeout);
@@ -119,7 +140,7 @@
                 $scope.prize.score = $scope.prize.score % 8;
                 $scope.$apply();
 
-                if (speed >= 400 && $scope.prize.score === 3) {
+                if (speed >= 400 && count > 40 && $scope.prize.score === prize) {
                     $scope.prize.running = false;
                     $scope.hasPrized = true;
                 }
@@ -128,7 +149,45 @@
             };
             var timeout = setTimeout(myFunction, speed);
 
+        }
+
+        var prizeFinish = function (prize) {
+            // if(prize.id == 3) {
+            //
+            // } else {
+            //
+            // }
+
+
         };
+
+        // BootstrapDialog.alert({
+        //     title: '',
+        //     message: '傻逼吧',
+        //     type: '',
+        //     closable: true,
+        //     draggable: true,
+        //     buttonLabel: '明天再来'
+        // });
+
+
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: require('./user.info.html'),
+            controller: 'UserInfoController',
+            resolve: {
+
+            }
+        });
+
+        modalInstance.result.then(
+            function success(result) {
+
+            },
+            function error(reason) {
+
+            }
+        );
 
         /******************** 设置背景 *********************/
 
