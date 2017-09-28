@@ -7,6 +7,24 @@
 
     function InfoController($scope, $log, player, $state) {
 
+        setTimeout(function() {
+
+            $(".slider-container").ikSlider({
+                speed: 1000
+            });
+            function changeActivePreview(i) {
+                $('.active').removeClass('active');
+            }
+
+            $('.slider-container').on('changeSlide.ikSlider', function (e) {
+                changeActivePreview(e.currentSlide);
+            });
+
+            changeActivePreview(0);
+
+        }, 0);
+
+
         $scope.teams = [
             {id: '1', name: '金州勇士', img: '../../plubic'},
             {id: '2', name: '凯尔特人', img: '../../plubic'},

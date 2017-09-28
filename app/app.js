@@ -11,8 +11,8 @@
                 var ua = window.navigator.userAgent.toLowerCase();
 
                 if (ua.indexOf('micromessenger') == -1 && toState.name != 'error') {
-                    event.preventDefault();
-                    $state.go('error');
+                    // event.preventDefault();
+                    // $state.go('error');
 
                 }
             });

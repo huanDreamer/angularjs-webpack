@@ -1,4 +1,3 @@
-import 'jquery'
 import 'angular'
 import 'bootstrap'
 import 'angular-ui-router'
