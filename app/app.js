@@ -9,6 +9,9 @@
 
             $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
                 var ua = window.navigator.userAgent.toLowerCase();
+
+                alert(ua);
+                
                 if (ua.indexOf('micromessenger') == -1 && toState.name != 'error') {
                     event.preventDefault();
                     $state.go('error');
