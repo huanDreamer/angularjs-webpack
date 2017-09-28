@@ -9,7 +9,7 @@
 
             $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
                 var ua = window.navigator.userAgent.toLowerCase();
-                if (ua.match(/MicroMessenger/i) !== 'micromessenger' && toState.name != 'error') {
+                if (ua.indexOf('micromessenger') == -1 && toState.name != 'error') {
                     event.preventDefault();
                     $state.go('error');
 
@@ -25,8 +25,8 @@
 
         }])
         .constant('Server', {
-            // WeChat: 'http://silllyfan.ngrok.cc'
-            WeChat: 'http://127.0.0.1:10000'
+            WeChat: 'http://wechat.sillyfan.top/api'
+            // WeChat: 'http://127.0.0.1:10000'
         })
         .config(['$qProvider', '$urlRouterProvider', '$injector', function ($qProvider, $urlRouterProvider, $injector) {
             $qProvider.errorOnUnhandledRejections(false);
