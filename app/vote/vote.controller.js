@@ -31,7 +31,6 @@
                 }
             });
 
-
         // 点击投票按钮
         $scope.vote = function (playerId, $event) {
             $event.stopPropagation();
@@ -94,9 +93,9 @@
                     code: localStorage.getItem('code')
                 }, function success(response) {
                     if (response.data) {
-                        prize(response.data.id)
+                        prize(response.data)
                     } else {
-                        prize(3);
+                        prize($scope.prize.awards[3]);
                     }
 
                 }, function error(reason) {
@@ -107,7 +106,7 @@
 
         function prize(prize) {
 
-            // localStorage.setItem("prize", new Date().getDate());
+            localStorage.setItem("prize", new Date().getDate());
 
             $scope.prize.running = true;
 
@@ -117,7 +116,7 @@
 
                 if ($scope.prize.running === false) {
 
-                    prizeFinish($scope.prize.awards[prize]);
+                    prizeFinish(prize);
 
                     return;
                 }
@@ -140,9 +139,10 @@
                 $scope.prize.score = $scope.prize.score % 8;
                 $scope.$apply();
 
-                if (speed >= 400 && count > 40 && $scope.prize.score === prize) {
+                if (speed >= 400 && count > 40 && $scope.prize.score === prize.id) {
                     $scope.prize.running = false;
                     $scope.hasPrized = true;
+                    $scope.$apply();
                 }
 
                 timeout = setTimeout(myFunction, speed);
@@ -152,42 +152,37 @@
         }
 
         var prizeFinish = function (prize) {
-            // if(prize.id == 3) {
-            //
-            // } else {
-            //
-            // }
+            if (prize.id === 3) {
+
+                BootstrapDialog.alert({
+                    title: '提示',
+                    message: '谢谢参与，请明天再来。',
+                    type: '',
+                    closable: true,
+                    draggable: true,
+                    buttonLabel: '好的'
+                });
+
+            } else {
+
+                $uibModal.open({
+                    animation: true,
+                    backdrop: false,
+                    templateUrl: require('./user.info.html'),
+                    controller: 'UserInfoController',
+                    resolve: {
+                        rewardId: function () {
+                            return prize.rewardId;
+                        },
+                        rewardName: function () {
+                            return prize.name;
+                        }
+                    }
+                });
+            }
 
 
         };
-
-        // BootstrapDialog.alert({
-        //     title: '',
-        //     message: '傻逼吧',
-        //     type: '',
-        //     closable: true,
-        //     draggable: true,
-        //     buttonLabel: '明天再来'
-        // });
-
-
-        var modalInstance = $uibModal.open({
-            animation: true,
-            templateUrl: require('./user.info.html'),
-            controller: 'UserInfoController',
-            resolve: {
-
-            }
-        });
-
-        modalInstance.result.then(
-            function success(result) {
-
-            },
-            function error(reason) {
-
-            }
-        );
 
         /******************** 设置背景 *********************/
 

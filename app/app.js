@@ -7,19 +7,20 @@
 
         .run(['$state', '$rootScope', function ($state, $rootScope) {
 
-            $state.go('welcome');
-
             $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
+                var ua = window.navigator.userAgent.toLowerCase();
+                if (ua.match(/MicroMessenger/i) !== 'micromessenger' && toState.name != 'error') {
+                    event.preventDefault();
+                    $state.go('error');
 
-                console.log(toState);
-
+                }
             });
 
-            $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-
-                console.log(toState);
-                console.log(fromState);
-
+            $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
+                var ua = window.navigator.userAgent.toLowerCase();
+                if (ua.match(/MicroMessenger/i) !== 'micromessenger') {
+                    $state.go('error');
+                }
             });
 
         }])
@@ -27,8 +28,16 @@
             // WeChat: 'http://silllyfan.ngrok.cc'
             WeChat: 'http://127.0.0.1:10000'
         })
-        .config(['$qProvider', function ($qProvider) {
+        .config(['$qProvider', '$urlRouterProvider', '$injector', function ($qProvider, $urlRouterProvider, $injector) {
             $qProvider.errorOnUnhandledRejections(false);
+
+            $urlRouterProvider.when("", "/welcome");
+
+            $urlRouterProvider.otherwise(function ($injector, $location) {
+                var $state = $injector.get("$state");
+                $state.go("welcome");
+            });
+
         }]);
 
 })();

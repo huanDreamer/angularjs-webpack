@@ -6,6 +6,7 @@
             $stateProvider
                 .state('app', {
                     abstract: true,
+                    name: 'index',
                     views: {}
                 })
                 .state('error', {
