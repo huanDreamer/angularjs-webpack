@@ -62,10 +62,10 @@
 
         $scope.hasPrized = false;
 
-        var prizeHistory = localStorage.getItem("prize");
-        if (prizeHistory && Number(prizeHistory) === new Date().getDate()) {
-            $scope.hasPrized = true;
-        }
+        // var prizeHistory = localStorage.getItem("prize");
+        // if (prizeHistory && Number(prizeHistory) === new Date().getDate()) {
+        //     $scope.hasPrized = true;
+        // }
 
 
         $scope.prize = {
