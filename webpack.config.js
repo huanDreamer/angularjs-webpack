@@ -1,19 +1,12 @@
 const webpack = require('webpack');
-module.exports = {
-    entry: __dirname + "/app/main.js",//已多次提及的唯一入口文件
-    output: {
-        path: __dirname + "/public",//打包后的文件存放的地方
-        filename: "bundle.js"//打包后输出文件的文件名
-    }
-};
-
 
 module.exports = {
-    devtool: 'eval-source-map',
+    // devtool: 'eval-source-map',
 
     entry: {
         'main': __dirname + "/app/main.js",
-        'lib': __dirname + "/app/lib.js"
+        'lib': __dirname + "/app/lib.js",
+        'style': __dirname + "/app/style.js"
     },
     output: {
         path: __dirname + "/public",
