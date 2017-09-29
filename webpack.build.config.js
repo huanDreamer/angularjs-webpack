@@ -106,6 +106,7 @@ module.exports = {
             "jQuery": "jquery",
             "window.jQuery": "jquery",
             "SockJS": "sockjs-client",
+            "BootstrapDialog": "bootstrap3-dialog"
         })
     ]
 
