@@ -62,29 +62,40 @@
 
         $scope.hasPrized = false;
 
-        // var prizeHistory = localStorage.getItem("prize");
-        // if (prizeHistory && Number(prizeHistory) === new Date().getDate()) {
-        //     $scope.hasPrized = true;
-        // }
-
+        var prizeHistory = localStorage.getItem("prize");
+        if (prizeHistory && Number(prizeHistory) === new Date().getDate()) {
+            $scope.hasPrized = true;
+        }
 
         $scope.prize = {
             score: 0,
             running: false,
             awards: [
-                {id: 0, name:"暖手袋"},
-                {id: 1, name:"中超毛巾"},
-                {id: 2, name:"iPhone"},
-                {id: 3, name:"未中奖"},
-                {id: 4, name:"休闲T恤"},
-                {id: 5, name:"中超邮票"},
-                {id: 6, name:"NBA门票"},
-                {id: 7, name:"时尚眼镜"}
+                {id: 0, name: "暖手袋"},
+                {id: 1, name: "中超毛巾"},
+                {id: 2, name: "iPhone"},
+                {id: 3, name: "未中奖"},
+                {id: 4, name: "休闲T恤"},
+                {id: 5, name: "中超邮票"},
+                {id: 6, name: "NBA门票"},
+                {id: 7, name: "时尚眼镜"}
             ]
         };
 
         $scope.start = function () {
             if ($scope.prize.running === true) {
+                return;
+            }
+            if($scope.history.length === 0) {
+                BootstrapDialog.alert({
+                    title: '提示',
+                    message: '投票后才可以抽奖哦。',
+                    type: '',
+                    closable: true,
+                    draggable: true,
+                    buttonLabel: '好的'
+                });
+
                 return;
             }
             if ($scope.hasPrized) {
@@ -164,6 +175,7 @@
         }
 
         var prizeFinish = function (prize) {
+            // 谢谢参与
             if (prize.id === 3) {
 
                 BootstrapDialog.alert({
@@ -175,6 +187,19 @@
                     buttonLabel: '好的'
                 });
 
+                // 门票
+            } else if (prize.id === 6) {
+
+                BootstrapDialog.alert({
+                    title: '提示',
+                    message: '恭喜你获得 <pan style="color: red">天天NBA门票</pan><br/>请妥善保存你的兑换码：' + prize.name,
+                    type: '',
+                    closable: true,
+                    draggable: true,
+                    buttonLabel: '好的'
+                });
+
+                // 其他
             } else {
 
                 $uibModal.open({

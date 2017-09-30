@@ -11,9 +11,8 @@
                 var ua = window.navigator.userAgent.toLowerCase();
 
                 if (ua.indexOf('micromessenger') == -1 && toState.name != 'error') {
-                    // event.preventDefault();
-                    // $state.go('error');
-
+                    event.preventDefault();
+                    $state.go('error');
                 }
             });
 
@@ -23,8 +22,8 @@
 
         }])
         .constant('Server', {
-            // WeChat: 'http://wechat.sillyfan.top/api'
-            WeChat: 'http://localhost/api'
+            WeChat: 'http://wechat.sillyfan.top/api'
+            // WeChat: 'http://localhost/api'
         })
         .config(['$qProvider', '$urlRouterProvider', '$injector', function ($qProvider, $urlRouterProvider, $injector) {
             $qProvider.errorOnUnhandledRejections(false);
