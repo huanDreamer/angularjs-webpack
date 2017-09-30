@@ -7,14 +7,18 @@
                  id="info{{$index}}"
                  ui-sref="info({playerId: player.playerId})"
                  style="background-image: url({{player.portrait}}); background-size: 100% 100%; position: absolute; width: 20.5%; height: 110px; border-radius: 20px; display: inline-block">
-            <span>
+
+                <span class="badge pull-left" style="background-color: orangered; font-size: medium; margin-top: -10px;">
+                    {{player.playerId + 1}}
+                </span>
+                <span>
                 <button ng-click="vote(player.playerId, $event)"
                         style="outline: 0;border: 1px gainsboro solid; border-radius: 8px;
                         background: transparent;
                         color: #fff; right: 0; bottom: -25px; height: 25px;
                         position: absolute">
-                    <span ng-if="!voted(player.playerId)">投票 {{player.playerId}}</span>
-                    <span ng-if="voted(player.playerId)">已投票 {{player.playerId}}</span>
+                    <span ng-if="!voted(player.playerId)">投票</span>
+                    <span ng-if="voted(player.playerId)">已投票</span>
                 </button>
             </span>
             </div>
@@ -29,13 +33,17 @@
                  ui-sref="info({playerId: player.playerId})"
                  style="background-image: url({{player.portrait}}); background-size: 100% 100%; position: absolute; width: 20.5%; height: 110px; border-radius: 20px; background-color: beige; display: inline-block">
 
+                <span class="badge pull-left" style="background-color: orangered; font-size: medium; margin-top: -10px;">
+                    {{player.playerId + 1}}
+                </span>
+
                 <button ng-click="vote(player.playerId, $event)"
                         style="outline: 0;border: 1px gainsboro solid; border-radius: 8px;
                         background: transparent;
                         color: #fff; right: 0; bottom: -25px; height: 25px;
                         position: absolute">
-                    <span ng-if="!voted(player.playerId)">投票 {{player.playerId}}</span>
-                    <span ng-if="voted(player.playerId)">已投票 {{player.playerId}}</span>
+                    <span ng-if="!voted(player.playerId)">投票</span>
+                    <span ng-if="voted(player.playerId)">已投票</span>
                 </button>
 
             </div>
@@ -49,55 +57,90 @@
 
         <div>
 
-            <table style="background-color: #fff; width: 240px; margin: auto; border-radius: 8px;">
+            <table style="background-color: #fff; width: 270px; margin: auto; border-radius: 8px;">
                 <tr style="line-height: 80px">
                     <td class="award-td">
-                        {{prize.awards[0].name}}
-                        <div class="award-div" ng-class="{'score': prize.score === 0}"></div>
+                        <div>
+                            <img class="prize-div" src="../../public/img/0.png" alt="">
+                            <!--<span>{{prize.awards[0].name}}</span>-->
+                            <div class="award-div" ng-class="{'score': prize.score === 0}"></div>
+                        </div>
                     </td>
                     <td class="award-td">
-                        {{prize.awards[1].name}}
-                        <div class="award-div" ng-class="{'score': prize.score === 1}"></div>
+                        <div>
+                            <img class="prize-div" src="../../public/img/1.png" alt="">
+                            <!--<span>{{prize.awards[1].name}}</span>-->
+                            <div class="award-div" ng-class="{'score': prize.score === 1}"></div>
+                        </div>
                     </td>
                     <td class="award-td">
-                        {{prize.awards[2].name}}
-                        <div class="award-div" ng-class="{'score': prize.score === 2}"></div>
+                        <div>
+                            <img class="prize-div" src="../../public/img/2.png" alt="">
+                            <!--<span>{{prize.awards[2].name}}</span>-->
+                            <div class="award-div" ng-class="{'score': prize.score === 2}"></div>
+                        </div>
                     </td>
                 </tr>
                 <tr style="line-height: 80px">
                     <td class="award-td">
-                        {{prize.awards[7].name}}
-                        <div class="award-div" ng-class="{'score': prize.score === 7}"></div>
+                        <div>
+                            <img class="prize-div" src="../../public/img/7.png" alt="">
+                            <!--<span>{{prize.awards[7].name}}</span>-->
+                            <div class="award-div" ng-class="{'score': prize.score === 7 }"></div>
+                        </div>
                     </td>
                     <td class="award-td">
-                        <button ng-if="!hasPrized" style="outline: none; border: 0 none; background: transparent" type="button" ng-click="start()">
+                        <button ng-if="!hasPrized" style="outline: none; border: 0 none; background: transparent"
+                                type="button" ng-click="start()">
                             <img width="80px;" src="../../public/img/startPrize.png" alt="">
                         </button>
-                        <button ng-if="hasPrized" style="outline: none; border: 0 none; background: transparent" type="button">已抽</button>
+                        <button ng-if="hasPrized" style="outline: none; border: 0 none; background: transparent"
+                                type="button" ng-click="start()">
+                            <img width="80px;" src="../../public/img/prized.png" alt="">
+                        </button>
                     </td>
                     <td class="award-td">
-                        {{prize.awards[3].name}}
-                        <div class="award-div" ng-class="{'score': prize.score === 3}"></div>
+                        <div>
+                            <img class="prize-div" alt="">
+                            <span>{{prize.awards[3].name}}</span>
+                            <div class="award-div" ng-class="{'score': prize.score === 3}"></div>
+                        </div>
                     </td>
                 </tr>
                 <tr style="line-height: 80px">
                     <td class="award-td">
-                        {{prize.awards[6].name}}
-                        <div class="award-div" ng-class="{'score': prize.score === 6}"></div>
+                        <div>
+                            <img class="prize-div" alt="">
+                            <span>{{prize.awards[6].name}}</span>
+                            <div class="award-div" ng-class="{'score': prize.score === 6}"></div>
+                        </div>
                     </td>
                     <td class="award-td">
-                        {{prize.awards[5].name}}
-                        <div class="award-div" ng-class="{'score': prize.score === 5}"></div>
+                        <div>
+                            <img class="prize-div" src="../../public/img/5.png" alt="">
+                            <!--<span>{{prize.awards[5].name}}</span>-->
+                            <div class="award-div" ng-class="{'score': prize.score === 5}"></div>
+                        </div>
                     </td>
                     <td class="award-td">
-                        {{prize.awards[4].name}}
-                        <div class="award-div" ng-class="{'score': prize.score === 4}"></div>
+                        <div>
+                            <img class="prize-div" src="../../public/img/4.png" alt="">
+                            <!--<span>{{prize.awards[4].name}}</span>-->
+                            <div class="award-div" ng-class="{'score': prize.score === 4}"></div>
+                        </div>
                     </td>
                 </tr>
 
             </table>
 
         </div>
+    </div>
+
+    <div style="margin: 0 auto; bottom: 0; color: white; width: 270px; border-radius: 8px;">
+        <h4>抽奖规则：</h4>
+        <p style="padding-left: 10px;">1.投票后才可以进行抽奖</p>
+        <p style="padding-left: 10px;">2.每人每天有一次抽奖机会</p>
+        <p style="padding-left: 10px;">3.最终解释权归活动方所有</p>
     </div>
 
 </div>

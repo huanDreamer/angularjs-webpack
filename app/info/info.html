@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <div style="float: right; margin-top: 20px">
+    <div style="float: right; margin-top: 20px; margin-right: 30px;">
         <span style="font-size: 1.4em;">{{player.name}}</span>
 
         <audio id="voice" ng-src="{{player.voice}}">
@@ -27,13 +27,16 @@
 
     </div>
 
-    <video controls="controls" width="100%" preload
-           poster="{{player.portrait}}">
+    <video style="margin-top: 20px;" controls="controls" width="100%" preload
+           poster="{{player.videoCover}}">
         <source src="{{player.video}}" type="video/mp4">
     </video>
 
-    <div>
-        <table style="margin: auto; line-height: 30px;">
+    <div style="position: relative; margin-top: 20px;">
+        <!--<div style="background: url('../../img/1.png')-->
+        <!--no-repeat; opacity: 0.5; width: 100px; height: 100px;  position: absolute; right: 10%;"></div>-->
+
+        <table style="margin: auto; line-height: 30px; position: absolute; width: 80%; left: 10%">
             <tr>
                 <td style="width: 60px">名字:</td>
                 <td style="width: 200px;">{{player.name}}</td>

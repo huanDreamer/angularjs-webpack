@@ -23,8 +23,8 @@
 
         }])
         .constant('Server', {
-            WeChat: 'http://wechat.sillyfan.top/api'
-            // WeChat: 'http://127.0.0.1:10000'
+            // WeChat: 'http://wechat.sillyfan.top/api'
+            WeChat: 'http://localhost/api'
         })
         .config(['$qProvider', '$urlRouterProvider', '$injector', function ($qProvider, $urlRouterProvider, $injector) {
             $qProvider.errorOnUnhandledRejections(false);

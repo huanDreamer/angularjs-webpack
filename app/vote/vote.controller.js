@@ -13,10 +13,10 @@
         $scope.players2 = [];
 
         var all = $scope.players.length;
-        for (var i = 0; i < all / 2; i++) {
+        for (var i = 0; i < 4; i++) {
             $scope.players2.push($scope.players[i]);
         }
-        $scope.players.splice(0, Math.fround(all / 2));
+        $scope.players.splice(0, 4);
 
         $scope.history = [];
 
@@ -72,19 +72,31 @@
             score: 0,
             running: false,
             awards: [
-                {id: 0, name: "奖品0"},
-                {id: 1, name: "奖品1"},
-                {id: 2, name: "奖品2"},
-                {id: 3, name: "谢谢"},
-                {id: 4, name: "奖品4"},
-                {id: 5, name: "奖品5"},
-                {id: 6, name: "奖品6"},
-                {id: 7, name: "奖品7"},
+                {id: 0, name:"暖手袋"},
+                {id: 1, name:"中超毛巾"},
+                {id: 2, name:"iPhone"},
+                {id: 3, name:"未中奖"},
+                {id: 4, name:"休闲T恤"},
+                {id: 5, name:"中超邮票"},
+                {id: 6, name:"NBA门票"},
+                {id: 7, name:"时尚眼镜"}
             ]
         };
 
         $scope.start = function () {
             if ($scope.prize.running === true) {
+                return;
+            }
+            if ($scope.hasPrized) {
+                BootstrapDialog.alert({
+                    title: '提示',
+                    message: '今天的抽奖机会已经用完，请明天再来。',
+                    type: '',
+                    closable: true,
+                    draggable: true,
+                    buttonLabel: '好的'
+                });
+
                 return;
             }
 
@@ -197,15 +209,15 @@
             //改变div的宽度
             $('.container').width(width);
 
-            for (var i = 0; i < $scope.players.length; i++) {
-                $($('#info' + i)).css('left', i * width * 0.255 + "px").css('top', ($scope.players.length - i) * 30 + "px");
+            for (var i = 0; i < 4; i++) {
+                $($('#info' + i)).css('left', i * width * 0.255 + "px").css('top', (4 - i) * 30 + "px");
             }
             $('#info0').css('left', '10px');
 
             for (var i = 0; i < $scope.players2.length; i++) {
-                $($('#info2' + i)).css('left', i * width * 0.255 + "px").css('bottom', (i + 2) * 30 + "px");
+                $($('#info2' + i)).css('left', i * width * 0.35 + "px").css('bottom', (i + 2) * 30 + "px");
             }
-            $('#info20').css('left', '10px');
+            $('#info20').css('left', '28px');
         });
     }
 })();

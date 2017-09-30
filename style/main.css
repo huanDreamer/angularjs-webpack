@@ -6,6 +6,14 @@
     height: 80px;
 }
 
+.prize-div {
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 70px;
+    height:70px;
+}
+
 .score {
     background-color: orangered;
     opacity: 0.3;
@@ -13,6 +21,7 @@
 }
 
 .award-td {
-    width: 80px;
+    width: 90px;
+    height: 90px;
     position: relative;
 }
