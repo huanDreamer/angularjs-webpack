@@ -13,6 +13,10 @@
             },
             'userinfo': {
                 method: 'POST'
+            },
+            'count': {
+                method: 'GET',
+                url: Server.WeChat + "/wechat/vote/prize/count"
             }
         });
 

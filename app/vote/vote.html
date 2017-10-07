@@ -1,5 +1,5 @@
 <div id="container"
-     style="background-size: 100%; padding: 10px; height: 1400px; background-image: url('http://ows8x8iqp.bkt.clouddn.com/vote.jpg?imageslim')">
+     style="background-size: 100%; padding: 10px; height: 1400px; background-image: url('http://img.sillyfan.top/voteBack.jpg?imageslim')">
 
     <div style="margin-top: 50px; position: relative">
         <div style="height: 200px;">
@@ -8,7 +8,8 @@
                  ui-sref="info({playerId: player.playerId})"
                  style="background-image: url({{player.portrait}}); background-size: 100% 100%; position: absolute; width: 20.5%; height: 110px; border-radius: 20px; display: inline-block">
 
-                <span class="badge pull-left" style="background-color: orangered; font-size: medium; margin-top: -10px;">
+                <span class="badge pull-left"
+                      style="background-color: orangered; font-size: medium; margin-top: -10px;">
                     {{player.playerId + 1}}
                 </span>
                 <span>
@@ -33,7 +34,8 @@
                  ui-sref="info({playerId: player.playerId})"
                  style="background-image: url({{player.portrait}}); background-size: 100% 100%; position: absolute; width: 20.5%; height: 110px; border-radius: 20px; background-color: beige; display: inline-block">
 
-                <span class="badge pull-left" style="background-color: orangered; font-size: medium; margin-top: -10px;">
+                <span class="badge pull-left"
+                      style="background-color: orangered; font-size: medium; margin-top: -10px;">
                     {{player.playerId + 1}}
                 </span>
 
@@ -56,40 +58,28 @@
         <img style="width: 100%" src="../../public/img/prizeFont.png" alt="">
 
         <div>
-
-            <table style="background-color: #fff; width: 270px; margin: auto; border-radius: 8px;">
-                <tr style="line-height: 80px">
-                    <td class="award-td">
-                        <div>
-                            <img class="prize-div" src="../../public/img/0.png" alt="">
-                            <!--<span>{{prize.awards[0].name}}</span>-->
-                            <div class="award-div" ng-class="{'score': prize.score === 0}"></div>
-                        </div>
+            <table style="background-image: url('../../img/border.png'); width: 300px; height: 300px; margin: auto; border-radius: 8px;">
+                <tbody style="padding: 12px;">
+                <tr class="award-tr">
+                    <td class="award-td" style="left: 20px; top: 20px;">
+                        <img class="prize-div" src="../../public/img/0.png" alt="">
+                        <div class="award-div" ng-class="{'score': prize.score === 0}"></div>
                     </td>
-                    <td class="award-td">
-                        <div>
-                            <img class="prize-div" src="../../public/img/1.png" alt="">
-                            <!--<span>{{prize.awards[1].name}}</span>-->
-                            <div class="award-div" ng-class="{'score': prize.score === 1}"></div>
-                        </div>
+                    <td class="award-td" style="left: 14px; top: 20px;">
+                        <img class="prize-div" src="../../public/img/1.png" alt="">
+                        <div class="award-div" ng-class="{'score': prize.score === 1}"></div>
                     </td>
-                    <td class="award-td">
-                        <div>
-                            <img class="prize-div" src="../../public/img/2.png" alt="">
-                            <!--<span>{{prize.awards[2].name}}</span>-->
-                            <div class="award-div" ng-class="{'score': prize.score === 2}"></div>
-                        </div>
+                    <td class="award-td" style="left: -6px; top: 20px;">
+                        <img class="prize-div" src="../../public/img/2.png" alt="">
+                        <div class="award-div" ng-class="{'score': prize.score === 2}"></div>
                     </td>
                 </tr>
-                <tr style="line-height: 80px">
-                    <td class="award-td">
-                        <div>
-                            <img class="prize-div" src="../../public/img/7.png" alt="">
-                            <!--<span>{{prize.awards[7].name}}</span>-->
-                            <div class="award-div" ng-class="{'score': prize.score === 7 }"></div>
-                        </div>
+                <tr class="award-tr">
+                    <td class="award-td" style="left: 20px; top: 15px;">
+                        <img class="prize-div" src="../../public/img/7.png" alt="">
+                        <div class="award-div" ng-class="{'score': prize.score === 7 }"></div>
                     </td>
-                    <td class="award-td">
+                    <td class="award-td" style="top: 4px;">
                         <button ng-if="!hasPrized" style="outline: none; border: 0 none; background: transparent"
                                 type="button" ng-click="start()">
                             <img width="80px;" src="../../public/img/startPrize.png" alt="">
@@ -99,41 +89,34 @@
                             <img width="80px;" src="../../public/img/prized.png" alt="">
                         </button>
                     </td>
-                    <td class="award-td">
-                        <div>
-                            <img class="prize-div" alt="">
-                            <span>{{prize.awards[3].name}}</span>
-                            <div class="award-div" ng-class="{'score': prize.score === 3}"></div>
-                        </div>
+                    <td class="award-td" style="left: -6px; top: 15px;">
+                        <img class="prize-div" src="../../public/img/3.png" alt="">
+                        <div class="award-div" ng-class="{'score': prize.score === 3}"></div>
                     </td>
                 </tr>
-                <tr style="line-height: 80px">
-                    <td class="award-td">
-                        <div>
-                            <img class="prize-div" alt="">
-                            <span>{{prize.awards[6].name}}</span>
-                            <div class="award-div" ng-class="{'score': prize.score === 6}"></div>
-                        </div>
+                <tr class="award-tr">
+                    <td class="award-td" style="left: 20px; top: 0;">
+                        <img class="prize-div" src="../../public/img/6.png" alt="">
+                        <div class="award-div" ng-class="{'score': prize.score === 6}"></div>
                     </td>
-                    <td class="award-td">
-                        <div>
-                            <img class="prize-div" src="../../public/img/5.png" alt="">
-                            <!--<span>{{prize.awards[5].name}}</span>-->
-                            <div class="award-div" ng-class="{'score': prize.score === 5}"></div>
-                        </div>
+                    <td class="award-td" style="left: 14px; top: 0;">
+                        <img class="prize-div" src="../../public/img/5.png" alt="">
+                        <div class="award-div" ng-class="{'score': prize.score === 5}"></div>
                     </td>
-                    <td class="award-td">
-                        <div>
-                            <img class="prize-div" src="../../public/img/4.png" alt="">
-                            <!--<span>{{prize.awards[4].name}}</span>-->
-                            <div class="award-div" ng-class="{'score': prize.score === 4}"></div>
-                        </div>
+                    <td class="award-td" style="left: -6px; top: 0;">
+                        <img class="prize-div" src="../../public/img/4.png" alt="">
+                        <div class="award-div" ng-class="{'score': prize.score === 4}"></div>
                     </td>
                 </tr>
 
+                </tbody>
             </table>
 
         </div>
+    </div>
+
+    <div style="margin-top: 20px; text-align: center;">
+        <span style="font-size: 24px; color: #dcdcdc; font-family: 'Arial';">已有 {{count}} 人参与</span>
     </div>
 
     <div style="margin: 0 auto; bottom: 0; color: white; width: 270px; border-radius: 8px;">

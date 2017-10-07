@@ -12,6 +12,8 @@
 
         $scope.players2 = [];
 
+        $scope.count = 0;
+
         var all = $scope.players.length;
         for (var i = 0; i < 4; i++) {
             $scope.players2.push($scope.players[i]);
@@ -29,7 +31,18 @@
                         $scope.history.push(item);
                     })
                 }
-            });
+            }
+        );
+
+        // 获取参与抽奖的总人数
+        PrizeService.count(
+            {},
+            function success(response) {
+                $scope.count = response.data;
+            }, function error(reason) {
+
+            }
+        );
 
         // 点击投票按钮
         $scope.vote = function (playerId, $event) {
@@ -86,7 +99,7 @@
             if ($scope.prize.running === true) {
                 return;
             }
-            if($scope.history.length === 0) {
+            if ($scope.history.length === 0) {
                 BootstrapDialog.alert({
                     title: '提示',
                     message: '投票后才可以抽奖哦。',
@@ -235,12 +248,12 @@
             $('.container').width(width);
 
             for (var i = 0; i < 4; i++) {
-                $($('#info' + i)).css('left', i * width * 0.255 + "px").css('top', (4 - i) * 30 + "px");
+                $($('#info' + i)).css('left', i * width * 0.255 + "px").css('top', (4 - i) * 25 + "px");
             }
             $('#info0').css('left', '10px');
 
             for (var i = 0; i < $scope.players2.length; i++) {
-                $($('#info2' + i)).css('left', i * width * 0.35 + "px").css('bottom', (i + 2) * 30 + "px");
+                $($('#info2' + i)).css('left', i * width * 0.35 + "px").css('bottom', (i + 2) * 35 + "px");
             }
             $('#info20').css('left', '28px');
         });

@@ -1,9 +1,3 @@
-import '../style/main.css';
-import '../style/slider.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.css'
-import '../node_modules/bootstrap3-dialog/dist/css/bootstrap-dialog.css'
-
-
 // js
 import './slider.js'
 import './app.js'

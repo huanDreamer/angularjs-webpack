@@ -10,18 +10,23 @@
     position: absolute;
     left: 3px;
     top: 3px;
-    width: 70px;
-    height:70px;
+    width: 75px;
+    height:75px;
 }
 
 .score {
-    background-color: orangered;
-    opacity: 0.3;
-    border-radius: 8px;
+    border: 5px solid red;
+    left:-2px;
+    top: -2px;
+    border-radius: 10px;
 }
 
 .award-td {
-    width: 90px;
-    height: 90px;
+    width: 80px !important;
+    height: 80px !important;
     position: relative;
+}
+
+.award-tr {
+    line-height: 80px;
 }
