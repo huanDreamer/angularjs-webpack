@@ -19,11 +19,11 @@
             $('#container').width(width);
 
             // 根据屏幕宽度加载对应的图片
-            $('#container').css("backgroundImage", "url('http://img.sillyfan.top/welcome.jpg?imageslim')");
+            $('#container').css("backgroundImage", "url('http://img.sillyfan.top/welcomeBack.png?imageslim')");
 
             $('#startImg').width(width / 4);
             $('#startBtn').css("marginLeft", width / 2 - $('#startImg').width() / 2 - 5 + "px");
-            $('#startBtn').css("marginTop", height * 0.8 + "px");
+            $('#startBtn').css("marginTop", "470px");
         });
 
         // 获取localstorage code

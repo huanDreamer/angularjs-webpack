@@ -89,7 +89,7 @@
                 {id: 2, name: "iPhone"},
                 {id: 3, name: "未中奖"},
                 {id: 4, name: "休闲T恤"},
-                {id: 5, name: "中超邮票"},
+                {id: 5, name: "NBA邮票"},
                 {id: 6, name: "NBA门票"},
                 {id: 7, name: "时尚眼镜"}
             ]
@@ -233,6 +233,17 @@
 
 
         };
+
+        /*随机生成中奖信息*/
+        var infos = [];
+
+        for(var i=0; i<100;i++) {
+            if (Math.floor(Math.random() * 10) % 8 !== 3) {
+                infos.push('139****' + (Math.floor(Math.random() * 9000) + 1000) + '获得' + $scope.prize.awards[Math.floor(Math.random() * 10) % 8].name)
+            }
+        }
+
+        $scope.phoneInfo = infos.join("   ");
 
         /******************** 设置背景 *********************/
 
