@@ -10,20 +10,12 @@
         // 设置背景的宽度和高度
         $(function () {
 
-            var height = $(window).height();
             var width = $(window).width();
 
-            //改变div的高度
-            $('#container').height(height);
-            //改变div的宽度
-            $('#container').width(width);
+            console.log(width);
 
-            // 根据屏幕宽度加载对应的图片
-            $('#container').css("backgroundImage", "url('http://img.sillyfan.top/welcomeBack.png?imageslim')");
-
-            $('#startImg').width(width / 4);
-            $('#startBtn').css("marginLeft", width / 2 - $('#startImg').width() / 2 - 5 + "px");
-            $('#startBtn').css("marginTop", "470px");
+            $('#startImg').width("120px");
+            $('#startDiv').css("top", "510px");
         });
 
         // 获取localstorage code

@@ -1,12 +1,10 @@
 <div style="background-color: black; color: white; padding: 10px;">
 
 
-    <div class="info-border" style="padding: 4px;">
-        <div class="slider-container" style="height: 400px;">
-            <div class="slider">
-                <div class="slider__item" ng-repeat="img in images">
-                    <img ng-src="{{img.url}}" alt="">
-                </div>
+    <div class="slider-container" style="border-radius: 10px;">
+        <div class="slider">
+            <div class="slider__item" ng-repeat="img in images">
+                <img ng-src="{{img.url}}" alt="">
             </div>
         </div>
     </div>
@@ -30,7 +28,7 @@
 
     </div>
 
-    <video style="margin-top: 20px;" controls="controls" width="100%" preload
+    <video style="margin-top: 20px; border-radius: 10px;" controls="controls" width="100%" preload
            poster="{{player.videoCover}}">
         <source src="{{player.video}}" type="video/mp4">
     </video>
