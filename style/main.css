@@ -30,3 +30,9 @@
 .award-tr {
     line-height: 80px;
 }
+
+.info-border {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-image: url("http://img.sillyfan.top/info1/1.png?imageslim");
+}

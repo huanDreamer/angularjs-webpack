@@ -1,9 +1,12 @@
-<div style="background-color: black; color: white; padding: 16px;">
+<div style="background-color: black; color: white; padding: 10px;">
 
-    <div class="slider-container">
-        <div class="slider">
-            <div class="slider__item" ng-repeat="img in images">
-                <img ng-src="{{img.url}}" alt="">
+
+    <div class="info-border" style="padding: 4px;">
+        <div class="slider-container" style="height: 400px;">
+            <div class="slider">
+                <div class="slider__item" ng-repeat="img in images">
+                    <img ng-src="{{img.url}}" alt="">
+                </div>
             </div>
         </div>
     </div>
@@ -32,5 +35,6 @@
         <source src="{{player.video}}" type="video/mp4">
     </video>
 
-    <img src="http://img.sillyfan.top/info1/1.png?imageslim" style="width: 100%; margin-top: 20px;" alt="">
+    <img ng-src="http://img.sillyfan.top/info1/{{player.playerId}}.png?imageslim" style="width: 100%; margin-top: 20px;"
+         alt="">
 </div>

@@ -7,11 +7,12 @@
 
     function InfoController($scope, $log, player, $state) {
 
-        setTimeout(function() {
+        setTimeout(function () {
 
             $(".slider-container").ikSlider({
                 speed: 1000
             });
+
             function changeActivePreview(i) {
                 $('.active').removeClass('active');
             }
@@ -23,7 +24,6 @@
             changeActivePreview(0);
 
         }, 0);
-
 
 
         $scope.player = player;

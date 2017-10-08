@@ -3,9 +3,9 @@
     'use strict';
 
     angular.module('portalApp')
-        .controller('VoteController', ['$scope', '$log', 'VoteService', 'PlayerService', 'PrizeService', '$location', '$state', '$uibModal', 'players', VoteController]);
+        .controller('VoteController', ['$scope', '$log', '$sce', 'VoteService', 'PlayerService', 'PrizeService', '$location', '$state', '$uibModal', 'players', VoteController]);
 
-    function VoteController($scope, $log, VoteService, PlayerService, PrizeService, $location, $state, $uibModal, players) {
+    function VoteController($scope, $log, $sce, VoteService, PlayerService, PrizeService, $location, $state, $uibModal, players) {
 
         // 初始化选手信息
         $scope.players = angular.copy(players);
@@ -237,13 +237,19 @@
         /*随机生成中奖信息*/
         var infos = [];
 
-        for(var i=0; i<100;i++) {
-            if (Math.floor(Math.random() * 10) % 8 !== 3) {
-                infos.push('139****' + (Math.floor(Math.random() * 9000) + 1000) + '获得' + $scope.prize.awards[Math.floor(Math.random() * 10) % 8].name)
+        var phonePre = [138, 139, 147, 183, 188, 176, 158, 189, 135];
+
+        for (var i = 0; i < 100; i++) {
+
+            var num = (Math.floor(Math.random() * 10) % 8);
+
+            if (num !== 3) {
+
+                infos.push('恭喜'+phonePre[num]+'****' + (Math.floor(Math.random() * 9000) + 1000) + '用户获得' + $scope.prize.awards[num].name)
             }
         }
 
-        $scope.phoneInfo = infos.join("   ");
+        $scope.phoneInfo = $sce.trustAsHtml(infos.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"));
 
         /******************** 设置背景 *********************/
 
