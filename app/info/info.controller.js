@@ -30,6 +30,17 @@
 
         $scope.images = [];
 
+        $scope.playStatus = false;
+
+        $scope.play = function () {
+            $scope.playStatus = !$scope.playStatus;
+            if ($scope.playStatus) {
+                $('#voice')[0].play();
+            } else {
+                $('#voice')[0].pause();
+            }
+        };
+
         angular.fromJson($scope.player.images).forEach(function (item, index) {
             $scope.images.push({url: item, id: index + 1});
         });
