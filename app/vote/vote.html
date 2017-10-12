@@ -6,13 +6,14 @@
     <div class="full">
 
         <div ng-repeat="player in players" ng-if="$index < 4" class="clearfix">
-            <img ng-src="../img/vote/{{player.playerId}}/portrait.png" style="width: 50%;" class="float-left" alt="">
+            <img ng-src="../img/vote/{{player.playerId}}/portrait.png"
+                 ui-sref="info({playerId: player.playerId})"
+                 style="width: 50%;" class="float-left" alt="">
 
             <div class="float-left" style="margin-left: -36px; padding-top: 8px; width: 50%">
 
                 <div class="clearfix">
                     <img ng-src="../img/vote/{{player.playerId}}/name.png" class="float-left" style="width: 140px;"
-                         ui-sref="info({playerId: player.playerId})"
                          alt="">
 
                     <!--<img src="../../public/img/vote/0/team.png" class="float-left"-->
