@@ -2,16 +2,27 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 80px;
-    height: 80px;
+    width: 96px;
+    height: 96px;
+}
+
+.full {
+    width: 100% !important;
+}
+
+.float-left {
+    float: left;
+}
+.float-right {
+    float: right;
 }
 
 .prize-div {
     position: absolute;
     left: 3px;
     top: 3px;
-    width: 75px;
-    height:75px;
+    width: 86px;
+    height: 86px;
 }
 
 .score {
@@ -22,13 +33,13 @@
 }
 
 .award-td {
-    width: 80px !important;
-    height: 80px !important;
+    width: 100px !important;
+    height: 100px !important;
     position: relative;
 }
 
 .award-tr {
-    line-height: 80px;
+    line-height: 100px;
 }
 
 .info-border {

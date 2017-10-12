@@ -8,17 +8,7 @@
     function VoteController($scope, $log, $sce, VoteService, PlayerService, PrizeService, $location, $state, $uibModal, players) {
 
         // 初始化选手信息
-        $scope.players = angular.copy(players);
-
-        $scope.players2 = [];
-
-        $scope.count = 0;
-
-        var all = $scope.players.length;
-        for (var i = 0; i < 4; i++) {
-            $scope.players2.push($scope.players[i]);
-        }
-        $scope.players.splice(0, 4);
+        $scope.players = players;
 
         $scope.history = [];
 
