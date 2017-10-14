@@ -241,28 +241,5 @@
 
         $scope.phoneInfo = $sce.trustAsHtml(infos.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"));
 
-        /******************** 设置背景 *********************/
-
-        // 设置背景的宽度和高度
-        $(function () {
-
-            var height = $(window).height();
-            var width = $(window).width();
-
-            //改变div的高度
-            $('.container').height("auto");
-            //改变div的宽度
-            $('.container').width(width);
-
-            for (var i = 0; i < 4; i++) {
-                $($('#info' + i)).css('left', i * width * 0.255 + "px").css('top', (4 - i) * 25 + "px");
-            }
-            $('#info0').css('left', '10px');
-
-            for (var i = 0; i < $scope.players2.length; i++) {
-                $($('#info2' + i)).css('left', i * width * 0.35 + "px").css('bottom', (i + 2) * 35 + "px");
-            }
-            $('#info20').css('left', '28px');
-        });
     }
 })();

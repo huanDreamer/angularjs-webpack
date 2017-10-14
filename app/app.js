@@ -10,10 +10,10 @@
             $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
                 var ua = window.navigator.userAgent.toLowerCase();
 
-                // if (ua.indexOf('micromessenger') == -1 && toState.name != 'error') {
-                //     event.preventDefault();
-                //     $state.go('error');
-                // }
+                if (ua.indexOf('micromessenger') == -1 && toState.name != 'error') {
+                    event.preventDefault();
+                    $state.go('error');
+                }
             });
 
             $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {

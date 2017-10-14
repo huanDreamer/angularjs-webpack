@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 
 module.exports = {
-    devtool: 'eval-source-map',
+    // devtool: 'eval-source-map',
 
     entry: {
         'main': __dirname + "/app/main.js",
@@ -14,7 +14,7 @@ module.exports = {
     },
 
     devServer: {
-        port: 11003,
+        port: 11000,
         contentBase: "./public",//本地服务器所加载的页面所在的目录
         historyApiFallback: true,//不跳转
         inline: false, //实时刷新,
