@@ -75,13 +75,13 @@
             running: false,
             awards: [
                 {id: 0, name: "暖手袋"},
-                {id: 1, name: "中超毛巾"},
-                {id: 2, name: "iPhone"},
+                {id: 1, name: "中超定制毛巾"},
+                {id: 2, name: "iPhone 8"},
                 {id: 3, name: "未中奖"},
-                {id: 4, name: "休闲T恤"},
-                {id: 5, name: "NBA邮票"},
-                {id: 6, name: "NBA门票"},
-                {id: 7, name: "时尚眼镜"}
+                {id: 4, name: "卡通定制T恤"},
+                {id: 5, name: "NBA纪念邮票"},
+                {id: 6, name: "天天范特西门票"},
+                {id: 7, name: "卡通限量眼镜"}
             ]
         };
 
