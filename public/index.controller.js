@@ -76,6 +76,26 @@
                 imgUrl: 'http://img.sillyfan.top/logo.png',
                 success: function () {
 
+                    alert('success');
+
+                    var shared = localStorage.getItem("share");
+
+                    if (shared && Number(shared) === new Date().getDate()) {
+                        return;
+                    } else {
+
+                        localStorage.setItem("share", new Date().getDate());
+
+                        BootstrapDialog.alert({
+                            title: '提示',
+                            message: '恭喜你获得第二次抽奖机会',
+                            type: '',
+                            closable: true,
+                            draggable: true,
+                            buttonLabel: '好的'
+                        });
+                    }
+
                 },
                 cancel: function () {
                     // 用户取消分享后执行的回调函数
