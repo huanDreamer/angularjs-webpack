@@ -12,8 +12,6 @@
 
             var width = $(window).width();
 
-            console.log(width);
-
             $('#startImg').width("120px");
             $('#startDiv').css("top", "510px");
         });
