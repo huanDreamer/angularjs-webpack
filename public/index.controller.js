@@ -43,9 +43,11 @@
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
                 // 用户确认分享后执行的回调函数
+                alert("分享成功");
             },
             cancel: function () {
                 // 用户取消分享后执行的回调函数
+                alert("你为何要取消？宝宝对不起你了吗？")
             }
         });
 
