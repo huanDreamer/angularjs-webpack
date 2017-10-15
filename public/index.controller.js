@@ -76,8 +76,6 @@
                 imgUrl: 'http://img.sillyfan.top/logo.png',
                 success: function () {
 
-                    alert('success');
-
                     var shared = localStorage.getItem("share");
 
                     if (shared && Number(shared) === new Date().getDate()) {
