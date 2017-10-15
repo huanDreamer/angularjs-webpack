@@ -16,7 +16,7 @@
                 var config = response.data;
 
                 wx.config({
-                    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
                     appId: config.appId, // 必填，公众号的唯一标识
                     timestamp: config.timestamp, // 必填，生成签名的时间戳
                     nonceStr: config.nonceStr, // 必填，生成签名的随机串
@@ -34,27 +34,52 @@
 
             wx.checkJsApi({
                 jsApiList: ['onMenuShareAppMessage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
-                success: function(res) {
+                success: function (res) {
                     console.log(res);
                 }
             });
 
-
-
-            wx.onMenuShareAppMessage({
-                title: '测试 分享 标题', // 分享标题
-                desc: '测试分享描述', // 分享描述
-                link: 'http://wechat.sillyfan.top', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: '', // 分享图标
-                type: '', // 分享类型,music、video或link，不填默认为link
-                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            wx.onMenuShareTimeline({
+                title: '懂球女神邀你一起 Battle',
+                link: 'http://wechat.sillyfan.top',
+                imgUrl: 'http://img.sillyfan.top/logo.png',
                 success: function () {
-                    // 用户确认分享后执行的回调函数
-                    alert("分享成功");
+
+                    var shared = localStorage.getItem("share");
+
+                    if (shared && Number(shared) === new Date().getDate()) {
+                        return;
+                    } else {
+
+                        localStorage.setItem("share", new Date().getDate());
+
+                        BootstrapDialog.alert({
+                            title: '提示',
+                            message: '恭喜你获得第二次抽奖机会',
+                            type: '',
+                            closable: true,
+                            draggable: true,
+                            buttonLabel: '好的'
+                        });
+                    }
                 },
                 cancel: function () {
                     // 用户取消分享后执行的回调函数
-                    alert("你为何要取消？宝宝对不起你了吗？")
+                }
+            });
+
+
+            wx.onMenuShareAppMessage({
+                title: '懂球女神邀你一起 Battle',
+                desc: '投票、抽奖、赢iphone，快来参与吧',
+                link: 'http://wechat.sillyfan.top',
+                imgUrl: 'http://img.sillyfan.top/logo.png',
+                success: function () {
+
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+
                 }
             });
 

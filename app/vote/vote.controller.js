@@ -63,11 +63,28 @@
 
         /******************** 抽奖 *********************/
 
-        $scope.hasPrized = false;
+        $scope.hasPrized = function() {
+            var prizeHistory = localStorage.getItem("prize");
+            var share = localStorage.getItem("share");
+            var sharePrized = localStorage.getItem("sharePrized");
 
-        var prizeHistory = localStorage.getItem("prize");
-        if (prizeHistory && Number(prizeHistory) === new Date().getDate()) {
-            $scope.hasPrized = true;
+            var i = 0;
+
+            // 第一次用完
+            if(prizeHistory && Number(prizeHistory) === new Date().getDate()) {
+                i = 1;
+            }
+
+            if(share && Number(share) === new Date().getDate()) {
+                i = 2;
+
+                if(sharePrized && Number(sharePrized) === new Date().getDate()) {
+                    i = 3;
+                }
+            }
+
+
+            return i;
         }
 
         $scope.prize = {
@@ -101,10 +118,24 @@
 
                 return;
             }
-            if ($scope.hasPrized) {
+
+            if ($scope.hasPrized() === 3) {
                 BootstrapDialog.alert({
                     title: '提示',
-                    message: '今天的抽奖机会已经用完，请明天再来。',
+                    message: '今天的抽奖机会已经用完，请明天再来叭~',
+                    type: '',
+                    closable: true,
+                    draggable: true,
+                    buttonLabel: '好的'
+                });
+
+                return;
+            }
+
+            if ($scope.hasPrized() === 1) {
+                BootstrapDialog.alert({
+                    title: '提示',
+                    message: '分享至朋友圈可获得第二次抽奖机会哦！',
                     type: '',
                     closable: true,
                     draggable: true,
@@ -132,7 +163,13 @@
 
         function prize(prize) {
 
-            localStorage.setItem("prize", new Date().getDate());
+            var prized = localStorage.getItem("prize");
+            if(prized && Number(prized) === new Date().getDate()) {
+                localStorage.setItem("sharePrized", new Date().getDate());
+            } else {
+                localStorage.setItem("prize", new Date().getDate());
+            }
+
 
             $scope.prize.running = true;
 
@@ -167,7 +204,6 @@
 
                 if (speed >= 400 && count > 40 && $scope.prize.score === prize.id) {
                     $scope.prize.running = false;
-                    $scope.hasPrized = true;
                     $scope.$apply();
                 }
 
@@ -181,14 +217,37 @@
             // 谢谢参与
             if (prize.id === 3) {
 
-                BootstrapDialog.alert({
-                    title: '提示',
-                    message: '谢谢参与，请明天再来。',
-                    type: '',
-                    closable: true,
-                    draggable: true,
-                    buttonLabel: '好的'
-                });
+                if($scope.hasPrized() !== 3) {
+
+                    var message = '';
+
+                    if($scope.hasPrized() === 1) {
+                        message = '差点就中奖啦~ 分享至朋友圈可获得第二次抽奖机会哦！'
+                    } else {
+                        message = '差点就中奖啦~ 你还有一次抽奖机会噢'
+                    }
+
+                    BootstrapDialog.alert({
+                        title: '提示',
+                        message: message,
+                        type: '',
+                        closable: true,
+                        draggable: true,
+                        buttonLabel: '好的'
+                    });
+
+                } else {
+
+                    BootstrapDialog.alert({
+                        title: '提示',
+                        message: '差点就中奖啦~ 今天的抽奖机会已用完，请明天再来叭~',
+                        type: '',
+                        closable: true,
+                        draggable: true,
+                        buttonLabel: '好的'
+                    });
+                }
+
 
                 // 门票
             } else if (prize.id === 6) {
@@ -235,7 +294,7 @@
 
             if (num !== 3) {
 
-                infos.push('恭喜'+phonePre[num]+'****' + (Math.floor(Math.random() * 9000) + 1000) + '用户获得' + $scope.prize.awards[num].name)
+                infos.push('恭喜' + phonePre[num] + '****' + (Math.floor(Math.random() * 9000) + 1000) + '用户获得' + $scope.prize.awards[num].name)
             }
         }
 

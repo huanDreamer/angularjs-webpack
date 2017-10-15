@@ -70,11 +70,11 @@
                             <div class="award-div" ng-class="{'score': prize.score === 7 }"></div>
                         </td>
                         <td class="award-td" style="top: 1px; left: 5px;">
-                            <button ng-if="!hasPrized" style="outline: none; border: 0 none; background: transparent"
+                            <button ng-if="hasPrized() != 3" style="outline: none; border: 0 none; background: transparent"
                                     type="button" ng-click="start()">
                                 <img style="width: 90px;" src="../../public/img/vote/startPrize.png" alt="">
                             </button>
-                            <button ng-if="hasPrized" style="outline: none; border: 0 none; background: transparent"
+                            <button ng-if="hasPrized() == 3" style="outline: none; border: 0 none; background: transparent"
                                     type="button" ng-click="start()">
                                 <img style="width: 90px;" src="../../public/img/vote/prized.png" alt="">
                             </button>
