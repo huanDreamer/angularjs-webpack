@@ -15,6 +15,10 @@
             'checkCode': {
                 url: Server.WeChat + "/wechat/code",
                 method: 'POST'
+            },
+            'getJsConfig': {
+                url: Server.WeChat + "/wechat/token/js_config",
+                method: 'GET'
             }
         });
 
