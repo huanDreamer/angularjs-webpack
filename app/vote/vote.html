@@ -7,19 +7,19 @@
 
     <div class="full">
 
-        <div ng-repeat="player in players" style="margin-top: 5%;" class="clearfix">
+        <div ng-repeat="player in players" style="margin-top: 8%;" class="clearfix">
             <!--<img ng-src="../img/vote/{{player.playerId}}/portrait.png"-->
             <!--ui-sref="info({playerId: player.playerId})"-->
             <!--style="width: 50%;" class="float-left" alt="">-->
 
             <img ng-src="{{player.portrait}}" ui-sref="info({playerId: player.playerId})"
-                 style="width: 60%; margin-left: 10%" alt="">
+                 style="width: 70%; margin-left: 10%" alt="">
 
             <img ng-click="vote(player.playerId, $event)" src="../../public/img/vote/vote.png"
                  ng-if="!voted(player.playerId)"
-                 style="width: 12%; min-width: 60px; margin-top: 18%; margin-left: -32%;">
+                 style="width: 12%; min-width: 60px; margin-top: 18%; margin-left: -37%;">
             <img src="../../public/img/vote/voted.png" ng-if="voted(player.playerId)"
-                 style="width: 12%; min-width: 60px; margin-top: 18%; margin-left: -32%;">
+                 style="width: 12%; min-width: 60px; margin-top: 18%; margin-left: -37%;">
 
             <!--<div class="float-left" style="margin-left: -36px; padding-top: 8px; width: 50%">-->
 
@@ -120,7 +120,7 @@
     </div>
 
     <div class="text-center" style="margin-top: 20px; margin-bottom: 20px;">
-        <img src="http://img.sillyfan.top/vote/rule.png" style="width: 92%;" alt="">
+        <img src="http://img.sillyfan.top/vote/rule_l.png" style="width: 92%;" alt="">
     </div>
 
 </div>
