@@ -1,5 +1,5 @@
 {
-  "name": "wechat_ui",
+  "name": "angularjs-webpack",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -29,6 +29,7 @@
     "angular-resource": "1.6.6",
     "angular-ui-bootstrap": "2.5.0",
     "angular-ui-router": "0.4.2",
+    "babel-plugin-angularjs-annotate": "0.8.2",
     "bootstrap": "3.3.7",
     "bootstrap3-dialog": "1.35.4",
     "components-font-awesome": "4.6.3",

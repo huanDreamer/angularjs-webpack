@@ -5,22 +5,17 @@
 
     angular.module('portalApp', ['ngResource', 'ui.router', 'ui.bootstrap'])
 
-        .run(['$state', '$rootScope', function ($state, $rootScope) {
+        .run(function ($state, $rootScope) {
 
             $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
-                var ua = window.navigator.userAgent.toLowerCase();
 
-                if (ua.indexOf('micromessenger') == -1 && toState.name != 'error') {
-                    event.preventDefault();
-                    $state.go('error');
-                }
             });
 
             $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
 
             });
 
-        }])
+        })
         .constant('Server', {
             WeChat: 'http://wechat.sillyfan.top/api'
             // WeChat: 'http://localhost/api'

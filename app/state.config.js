@@ -28,44 +28,5 @@
                         }
                     }
                 })
-                .state('vote', {
-                    parent: 'app',
-                    url: '/vote',
-                    views: {
-                        'main@': {
-                            templateUrl: require('./vote/vote.html'),
-                            controller: 'VoteController'
-                        }
-                    },
-                    resolve: {
-                        players: ['PlayerService', '$q', function (PlayerService, $q) {
-                            var d = $q.defer();
-                            PlayerService.list({}, function (response) {
-                                d.resolve(response.data);
-                            });
-                            return d.promise;
-                        }]
-                    }
-                })
-                .state('info', {
-                    parent: 'vote',
-                    url: '/info/:playerId',
-                    views: {
-                        'main@': {
-                            templateUrl: require('./info/info.html'),
-                            controller: 'InfoController'
-                        }
-                    },
-                    resolve: {
-                        player: ['PlayerService', '$q', '$stateParams', function (PlayerService, $q, $stateParams) {
-                            var d = $q.defer();
-                            PlayerService.get({playerId: $stateParams.playerId}, function (response) {
-                                d.resolve(response.data);
-                            });
-                            return d.promise;
-                        }]
-                    }
-                })
-
         }])
 })();
